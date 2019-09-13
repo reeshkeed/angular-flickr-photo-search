@@ -1,4 +1,4 @@
-<nav class="navbar bg-dark text-white">
+<nav class="navbar bg-info text-white">
   <div class="container">
     <a class="navbar-brand">
       <img src="../favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -10,5 +10,36 @@
     </form>
   </div>
 </nav>
+
+<div class="container">
+  <h1>Results</h1>
+
+  <div class="row">
+    <div class="col-sm-4 food-list" *ngFor="let list of inputList">
+      <div class="card food-item">
+        <!--a href="javascript:void(0);" (click)="foodSelected(food)"-->
+          <div class="food-image">
+            <img class="card-img-top hoverable" [src]="getImageUrl(list)" alt="Card image">
+            <p>{{ list.title }}</p>
+          </div>
+        <!--/a-->
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="pages">
+        <div class="prev-page" *ngIf="pageNumber!=1">
+          <a href="javascript:void(0);" class="btn btn-primary" (click)="pageNumber=pageNumber-1; getImageList()" >&laquo; Previous page</a>
+        </div>
+        <div class="page-no">
+          <a href="#"class="btn btn-primary">{{ pageNumber }}</a>
+        </div>
+        <div class="next-page">
+          <a href="javascript:void(0);" class="btn btn-primary" (click)="pageNumber=pageNumber+1; getImageList()" > Next page &raquo;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <router-outlet></router-outlet>
