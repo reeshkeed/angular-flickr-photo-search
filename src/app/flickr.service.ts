@@ -10,21 +10,26 @@ export class FlickrService {
   private flickrArgs = {
     params: {
       api_key : 'cc9cb4d48909c3366187f8fcd31a6a9c',
+      privacy_filter : '5',
+      sort : 'relevance',
+      safe_search : '1',
+      content_type : '1',
+      media: 'photos',
       format : 'json',
       nojsoncallback: '1',
       per_page : '20'
     }
   }
 
-  private flickrUrl = "https://api.flickr.com/services/rest/";
+  private flickrUrl = "https://www.flickr.com/services/rest/";
 
   constructor(private http : HttpClient) { }
 
   getImages(pageNumber : number) : Observable<any> {
     const API_URL = this.flickrUrl;
     this.flickrArgs.params['method'] = 'flickr.photos.search';
-    this.flickrArgs.params['tags'] = 'gaming';
-    this.flickrArgs.params['text'] = 'gaming';
+    this.flickrArgs.params['tags'] = 'supercars';
+    this.flickrArgs.params['text'] = 'supercars';
     this.flickrArgs.params['page'] = pageNumber.toString();
     return this.http.get<any>(API_URL,this.flickrArgs);
   }
