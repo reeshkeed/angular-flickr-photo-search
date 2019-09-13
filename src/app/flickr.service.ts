@@ -25,12 +25,12 @@ export class FlickrService {
 
   constructor(private http : HttpClient) { }
 
-  getImages(pageNumber : number) : Observable<any> {
+  getImages(pageNumber : number, query : string) : Observable<any> {
     const API_URL = this.flickrUrl;
     this.flickrArgs.params['method'] = 'flickr.photos.search';
-    this.flickrArgs.params['tags'] = 'supercars';
-    this.flickrArgs.params['text'] = 'supercars';
-    this.flickrArgs.params['page'] = pageNumber.toString();
+    this.flickrArgs.params['tags'] = query;
+    this.flickrArgs.params['text'] = query;
+    this.flickrArgs.params['page'] = pageNumber;
     return this.http.get<any>(API_URL,this.flickrArgs);
   }
 

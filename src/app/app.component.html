@@ -5,8 +5,9 @@
       Flickr Photo Search
     </a>
     <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      <input [formControl]="inputQuery"  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button (click)="searchQuery()" class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      <p>{{ inputQuery.value }}  </p>
     </form>
   </div>
 </nav>
