@@ -13,21 +13,11 @@ export class AppComponent {
 
   public inputList : any = [];
   public pageNumber : number = 1;
-
+  public inputQuery = new FormControl('');
 
   constructor(private _flickrService : FlickrService, private router : Router) { }
 
-  ngOnInit() {
-    this.getImageList();
-  }
-
-  inputQuery = new FormControl('');
-
   searchQuery() {
-    return this.inputQuery.setValue('fish');
-  }
-
-  getImageList() {
     this._flickrService.getImages(this.pageNumber, this.inputQuery.value).subscribe(result => {
       this.inputList = result.photos.photo;
     })
