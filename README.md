@@ -1,8 +1,18 @@
-# AngularFlickrPhotoSearch
+# Angular Flickr Photo Search
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
+A simple Angular 8 photo search using flickr api.
 
 ## Development server
+
+Clone project repository  
+```
+git clone https://github.com/reeshkeed/angular-flickr-photo-search.git
+```
+
+Install dependencies  
+```
+npm install
+```
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
