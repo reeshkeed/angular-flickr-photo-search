@@ -26,18 +26,26 @@
       </div>
     </div>
 
-    <div class="col-sm-12">
-      <div class="pages">
-        <div class="prev-page" *ngIf="pageNumber!=1">
-          <a href="javascript:void(0);" class="btn btn-primary" (click)="pageNumber=pageNumber-1; searchQuery()" >&laquo; Previous page</a>
-        </div>
-        <div class="page-no">
-          <a href="#"class="btn btn-primary">{{ pageNumber }}</a>
-        </div>
-        <div class="next-page">
-          <a href="javascript:void(0);" class="btn btn-primary" (click)="pageNumber=pageNumber+1; searchQuery()" > Next page &raquo;</a>
-        </div>
-      </div>
+    <div class="col-sm-12" *ngIf="pageNumber > 0">
+      <nav aria-label="Search Pagination">
+        <ul class="pagination justify-content-end">
+          <li class="page-item" [ngClass]="{'disabled': pageNumber <= 1}">
+            <a class="page-link" href="javascript:void(0);" (click)="pageNumber=pageNumber-1; pagination()">Previous</a>
+          </li>
+          <li class="page-item" *ngIf="pageNumber != 1">
+            <a class="page-link" href="javascript:void(0);" (click)="pageNumber=pageNumber-1; pagination()">{{ pageNumber-1 }}</a>
+          </li>
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="javascript:void(0);" (click)="pageNumber=pageNumber; pagination()">{{ pageNumber }}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0);" (click)="pageNumber=pageNumber+1; pagination()">{{ pageNumber+1 }}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="javascript:void(0);" (click)="pageNumber=pageNumber+1; pagination()">Next</a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </div>

@@ -12,15 +12,26 @@ export class AppComponent {
   title = 'angular-flickr-photo-search';
 
   public inputList : any = [];
-  public pageNumber : number = 1;
+  public pageNumber : number = 0;
   public inputQuery = new FormControl('');
 
   constructor(private _flickrService : FlickrService, private router : Router) { }
 
-  searchQuery() {
+  pagination() {
     this._flickrService.getImages(this.pageNumber, this.inputQuery.value).subscribe(result => {
       this.inputList = result.photos.photo;
     })
+  }
+
+  searchQuery() {
+    if (this.inputQuery.value == "") {
+      console.log("Input needed");
+    } else {
+      this._flickrService.getImages(this.pageNumber, this.inputQuery.value).subscribe(result => {
+        this.inputList = result.photos.photo;
+        this.pageNumber = 1;
+      })
+    }
   }
 
   getImageUrl(input : any) : string {

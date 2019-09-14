@@ -10,8 +10,8 @@ export class FlickrService {
   private flickrArgs = {
     params: {
       api_key : 'cc9cb4d48909c3366187f8fcd31a6a9c',
-      privacy_filter : '5',
-      sort : 'relevance',
+      sort: "relevance",
+      privacy_filter : '1',
       safe_search : '1',
       content_type : '1',
       media: 'photos',
