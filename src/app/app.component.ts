@@ -15,6 +15,7 @@ export class AppComponent {
   public pageNumber : number = 0;
   public inputQuery = new FormControl('');
   public inputResult: string = "";
+  public totalResults = null;
   public selectedImg = null;
   public isLoading : boolean = false;
 
