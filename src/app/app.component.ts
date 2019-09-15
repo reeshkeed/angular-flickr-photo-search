@@ -14,6 +14,7 @@ export class AppComponent {
   public inputList : any = [];
   public pageNumber : number = 0;
   public inputQuery = new FormControl('');
+  public selectedImg = null;
 
   constructor(private _flickrService : FlickrService, private router : Router) { }
 
@@ -32,6 +33,18 @@ export class AppComponent {
         this.pageNumber = 1;
       })
     }
+  }
+
+  imageInfo(id : number) {
+    this._flickrService.getImageInfo(id).subscribe(result => {
+      this.selectedImg = result.photo;
+      $('#selectedModal').modal('show');
+      console.log(this.selectedImg);
+    })
+  }
+
+  showImage() {
+    return this._flickrService.displayImage(this.selectedImg);
   }
 
   getImageUrl(input : any) : string {

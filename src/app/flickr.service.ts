@@ -34,6 +34,13 @@ export class FlickrService {
     return this.http.get<any>(API_URL,this.flickrArgs);
   }
 
+  getImageInfo(imageId : number): Observable<any> {
+    const API_URL = this.flickrUrl;
+    this.flickrArgs.params['method'] = 'flickr.photos.getInfo';
+    this.flickrArgs.params['photo_id'] = imageId;
+    return this.http.get<any>(API_URL,this.flickrArgs);
+  }
+
   displayImage(input:any): string {
     return 'http://farm'+input.farm+'.static.flickr.com/'+input.server+'/'+input.id+'_'+input.secret+'.jpg';
   }
