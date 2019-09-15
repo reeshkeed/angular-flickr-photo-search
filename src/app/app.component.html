@@ -11,8 +11,15 @@
   </div>
 </nav>
 
-<div class="container">
-  <h1>Results</h1>
+<div class="container mt-5 mb-0">
+  <div class="d-flex">
+    <p class="mb-0" *ngIf="pageNumber > 0">Results for <i>"{{ inputResult }}"</i></p>
+    <p class="ml-auto mb-0 text-info">{{ totalResults | number }}</p>
+  </div>
+
+  <div class="spinner-border text-info" *ngIf="isLoading" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
 
   <div class="row">
     <div class="col-sm-4 food-list" *ngFor="let list of inputList">

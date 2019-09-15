@@ -14,13 +14,17 @@ export class AppComponent {
   public inputList : any = [];
   public pageNumber : number = 0;
   public inputQuery = new FormControl('');
+  public inputResult: string = "";
   public selectedImg = null;
+  public isLoading : boolean = false;
 
   constructor(private _flickrService : FlickrService, private router : Router) { }
 
   pagination() {
+    this.isLoading = true;
     this._flickrService.getImages(this.pageNumber, this.inputQuery.value).subscribe(result => {
       this.inputList = result.photos.photo;
+      this.isLoading = false;
     })
   }
 
@@ -28,8 +32,12 @@ export class AppComponent {
     if (this.inputQuery.value == "") {
       console.log("Input needed");
     } else {
+      this.isLoading = true;
       this._flickrService.getImages(this.pageNumber, this.inputQuery.value).subscribe(result => {
         this.inputList = result.photos.photo;
+        this.inputResult = this.inputQuery.value;
+        this.totalResults = result.photos.total;
+        this.isLoading = false;
         this.pageNumber = 1;
       })
     }
