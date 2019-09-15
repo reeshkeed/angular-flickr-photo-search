@@ -17,7 +17,7 @@ export class FlickrService {
       media: 'photos',
       format : 'json',
       nojsoncallback: '1',
-      per_page : '19'
+      per_page : '24'
     }
   }
 
