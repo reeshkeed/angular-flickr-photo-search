@@ -38,8 +38,7 @@ export class AppComponent {
   imageInfo(id : number) {
     this._flickrService.getImageInfo(id).subscribe(result => {
       this.selectedImg = result.photo;
-      jQuery('#selectedModal').modal('show');
-      console.log(this.selectedImg);
+      $('#selectedModal').modal('show');
     })
   }
 
